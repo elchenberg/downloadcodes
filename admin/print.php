@@ -51,6 +51,7 @@ order by c.batch desc
 		echo '</td>';
 		echo '<td>';
 		echo '<p><a class="btn btn-large btn-success" href="print_page.php?album='.$row['id'].'&batch='.$row['batch'].'" target="_blank"><i class="icon-print"></i> Print this Batch</a></p>';
+		echo '<p><a class="btn btn-large btn-success" href="export_csv.php?album='.$row['id'].'&batch='.$row['batch'].'" target="_blank"><i class="icon-download"></i> Download this Batch as CSV</a></p>';
 		echo '</td>';
 		echo '</tr>';
 	}

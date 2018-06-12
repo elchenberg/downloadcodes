@@ -45,11 +45,14 @@ if(isset($_POST)){
 				printf("<div class=\"alert alert-error\">Error: %s</div>", $mysqli->error);
 			}	
 		}else{
-			printf("<div class=\"alert alert-error\"><strong># Codes</strong> &amp; <strong># Dls per Code</strong> must both be greater than 0.</div>");	
+			printf("<div class=\"alert alert-error\"><strong>Number of Codes</strong> &amp; <strong>Number of Downloads per Codes</strong> must both be greater than 0.</div>");	
 		}
 
 		
 	//Create new album
+	// TODO: Empty cover image and empty album zip ("touch cover.jpg" and "touch album.zip")
+	//       throw an error about somethong with MariaDB(?!?) but create a new album without
+	//       codes etc.
 	}elseif(isset($_POST['name'])){
 		//check for uploaded files
 		if (isset($_FILES['thumb']['tmp_name']) && is_uploaded_file($_FILES['thumb']['tmp_name']) && isset($_FILES['zip']['tmp_name']) && is_uploaded_file($_FILES['zip']['tmp_name']) ) {
@@ -108,9 +111,11 @@ if(isset($_POST)){
 					}
 
 				}else{
+				    // TODO: Shouldn't the file location be the other way around? (see below)
 					echo '<div class="alert alert-error">ZIP/RAR could not be uploaded to ./img/'.$zfn.'</div>';	
 				}
 			}else{
+    		    // TODO: Shouldn't the file location be the other way around? (see above)
 				echo '<div class="alert alert-error">Thumbnail could not be uploaded to '.$FILE_LOCATION.$tfn.'</div>';
 			}
 		}else{
@@ -182,8 +187,8 @@ if(isset($_POST)){
 	    		?>
 			</select>
 
-			<input type="text" class="input-medium" placeholder="# Codes" name="num_codes">
-  			<input type="text" class="input-medium" placeholder="# DLs per Code" name="num_dls">
+			<input type="text" class="input-large" placeholder="Number of Codes" name="num_codes">
+  			<input type="text" class="input-large" placeholder="Number of Downloads per Codes" name="num_dls">
   			<input type="submit" class="btn btn-large btn-success" name="submit" value="Add Codes!" />
 		</form>
 	</div>
@@ -191,20 +196,20 @@ if(isset($_POST)){
 	<div class="span4 well">		
 		<form method="post" enctype='multipart/form-data'>
 			<legend>Create a new album</legend>
-			<input type="text" class="input-medium" placeholder="Artist Name" name="artist">
-			<input type="text" class="input-medium" placeholder="Album Name" name="name">
-			<input type="text" class="input-medium" placeholder="# Codes" name="num_codes">
-			<input type="text" class="input-medium" placeholder="# DLs per Code" name="num_dls">
+			<input type="text" class="input-large" placeholder="Artist Name" name="artist">
+			<input type="text" class="input-large" placeholder="Album Name" name="name">
+			<input type="text" class="input-large" placeholder="Number of Codes" name="num_codes">
+			<input type="text" class="input-large" placeholder="Number of Downloads per Codes" name="num_dls">
 			<div class="control-group well">
 			    <label class="control-label" for="thumb"><i class="icon-picture"></i> Album Cover</label>
 				<div class="controls">
-					<input type="file" class="input-medium" id="thumb" placeholder="Album Thumb" name="thumb">	
+					<input type="file" class="input-large" id="thumb" placeholder="Album Thumb" name="thumb">	
 				</div>
 		  	</div>
 		  	<div class="control-group well">
 			    <label class="control-label" for="zip"><i class="icon-music"></i> ZIP/RAR File</label>
 				<div class="controls">
-					<input type="file" class="input-medium" placeholder="ZIP/RAR File" name="zip">	
+					<input type="file" class="input-large" placeholder="ZIP/RAR File" name="zip">	
 				</div>
 		  	</div>
 		  	<input type="submit" class="btn btn-large btn-success" name="submit" value="Create Album!" />
@@ -249,7 +254,7 @@ order by c.batch desc
 		echo 'Downloaded '.$row['downloads'].' times';
 		echo '</td>';
 		echo '<td>';
-		echo '<p><a class="btn btn-mini btn-success" href="print.php?album='.$row['id'].'"><i class="icon-print"></i> Print Codes</a></p>';
+		echo '<p><a class="btn btn-mini btn-success" href="print.php?album='.$row['id'].'"><i class="icon-print"></i> Print or Download Codes</a></p>';
 		echo '<p><a class="btn btn-mini btn-warning modify" href="#myModal" data-toggle="modal" data-id="'.$row['id'].'"><i class="icon-edit"></i> Modify</a></p>';
 		echo '<p><a class="btn btn-mini btn-danger confirm" href="del.php?id='.$row['id'].'"><i class="icon-remove"></i> Remove</a></p>';
 		echo '</td>';
@@ -276,13 +281,13 @@ echo '</table>';
     	<div class="control-group well">
 			    <label class="control-label" for="thumb"><i class="icon-picture"></i> Album Cover</label>
 				<div class="controls">
-					<input type="file" class="input-medium" id="thumb" placeholder="Album Thumb" name="thumb">	
+					<input type="file" class="input-large" id="thumb" placeholder="Album Thumb" name="thumb">	
 				</div>
 		  	</div>
 		  	<div class="control-group well">
 			    <label class="control-label" for="zip"><i class="icon-music"></i> ZIP/RAR File</label>
 				<div class="controls">
-					<input type="file" class="input-medium" placeholder="ZIP/RAR File" name="zip">	
+					<input type="file" class="input-large" placeholder="ZIP/RAR File" name="zip">	
 				</div>
 		  	</div>
     </form>
