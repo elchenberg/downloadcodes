@@ -1,5 +1,5 @@
 <?php
-require_once('config.php');
+require_once('../application/config.php');
 
 if(isset($_GET) && isset($_GET['code'])){
 	$code = $mysqli->real_escape_string($_GET['code']);

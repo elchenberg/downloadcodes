@@ -1,5 +1,5 @@
 <?php
-require_once('../config.php');
+require_once('../../application/config.php');
 require_once('top.php');
 
 echo '<h1>Install Download Codes</h1>';

@@ -2,9 +2,9 @@
 
 //Database Connection Info
 $HOSTNAME = "localhost";
-$DATABASE = "downloads";
-$USERNAME = "downloads";
-$PASSWORD = "downloads";
+$DATABASE = "gtrdskmx";
+$USERNAME = "gtrdskmx_ro";
+$PASSWORD = "lK6WVXrz1_K94ruS7glz";
 
 $msqli_error = false;
 $mysqli = mysqli_connect($HOSTNAME, $USERNAME, $PASSWORD, $DATABASE);
@@ -13,7 +13,7 @@ if (mysqli_connect_errno($mysqli)) {
 }
 
 //location to store files, should not be under the webroot
-$FILE_LOCATION = "c:\\wamp\\download_files\\";
+$FILE_LOCATION = __DIR__."/../uploads/";
 
 function create_code(){
 	//TODO - don't generate duplicates.

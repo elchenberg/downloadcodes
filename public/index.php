@@ -1,5 +1,5 @@
 <?php
-require_once('config.php');
+require_once('../application/config.php');
 $result = $mysqli->query("select * from config where id = 1");
 $config = $result->fetch_assoc();
 require_once('top.php');

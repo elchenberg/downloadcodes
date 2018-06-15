@@ -1,5 +1,5 @@
 <?php
-require_once('../config.php');
+require_once('../../application/config.php');
 require_once('simpleimage.php');
 require_once('top.php');
 error_reporting(E_ALL);

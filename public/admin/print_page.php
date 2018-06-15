@@ -31,7 +31,7 @@ img{
 
 <div id="main">
 <?php
-require_once('../config.php');
+require_once('../../application/config.php');
 if(isset($_GET)){
 	$album_id = $mysqli->real_escape_string($_GET['album']);
 	$batch_id = $mysqli->real_escape_string($_GET['batch']);
