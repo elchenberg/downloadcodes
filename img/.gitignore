@@ -1,0 +1,7 @@
+# Ignore everything
+*
+# But not these files
+!.gitignore
+!glyphicons-halflings.png
+!glyphicons-halflings-white.png
+
